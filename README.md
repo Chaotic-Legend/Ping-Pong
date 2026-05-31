@@ -28,7 +28,7 @@ Reminder on the difference between reference and starting state files:
 
 <ins> Task prompt (ask the Employee) </ins>
 <br>
-We are beginning development of a modern 2D Ping Pong arcade game that emphasizes precise timing, spatial awareness, and competitive reflexes to create a clear and engaging gameplay experience. Your task is to design and implement a complete system for two players and a bouncing ball, using two short, white, rectangular, vertical paddles and a small white square ball. The paddles, ball physics, scoring zones, UI elements, and game states should get organized so that gameplay interactions, scoring, and state changes behave consistently throughout play. This system should establish the foundations for player movement, collision behavior, score tracking, gameplay interactions, and overall match progression. The game system must prioritize responsiveness, clarity, and consistency by incorporating well-structured keyboard input handling, accurate collision detection, and a stable locked camera system that maintains a clear view of the entire playfield at all times. All visual assets, including paddles, ball, UI elements, and level boundaries, must render sharply and clearly without distortion, preserving strong visual clarity throughout gameplay. A white dashed line should divide the center of the playfield, and pressing the E key should toggle a solid predictive trajectory line that visualizes the ball's path after a paddle hit. The game environment and all menu screens must use a completely black background to ensure high contrast with gameplay elements. The completed game system must support the following behaviors:
+We are beginning development of a modern 2D Ping Pong arcade game that emphasizes precise timing, spatial awareness, and competitive reflexes to create a clear and engaging gameplay experience. Your task is to design and implement a complete system for two players and a bouncing ball, using two short, white, rectangular, vertical paddles and a small white square ball. The paddles, ball physics, scoring zones, UI elements, and game states should get organized so that gameplay interactions, scoring, and state changes behave consistently throughout play. This system should establish the foundations for player movement, collision behavior, score tracking, gameplay interactions, and overall match progression. The game system must prioritize responsiveness, clarity, and consistency by incorporating well-structured keyboard input handling, accurate collision detection, and a stable locked camera system that maintains a clear view of the entire playfield at all times. All visual assets, including paddles, ball, UI elements, and level boundaries, must render sharply and clearly without distortion, preserving strong visual clarity throughout gameplay. A white dashed line should divide the center of the playfield, and pressing the E key should toggle a solid predictive trajectory line that visualizes the ball's path after a paddle hit. The game environment and all menu screens must use a completely black background to ensure high contrast with gameplay elements. The completed system must support the following behaviors and mechanics:
 
 - The paddles move up and down with the W and S keys and the arrow keys, and stop when released.
 - The ball always starts at the center and gradually increases speed after each paddle bounce.
@@ -36,7 +36,7 @@ We are beginning development of a modern 2D Ping Pong arcade game that emphasize
 - The score increases by one point when the ball enters either goal zone, triggering a win sound effect.
 - The main menu is titled "PING PONG" at the center top with three vertically stacked mode buttons.
 - The game supports three separate modes: "Player 1 vs COM," "Player 1 vs Player 2," and "COM vs COM."
-- Pressing the Q key enables debug mode, allowing ball control with the UHJK keys while hiding the trajectory line.
+- Pressing the Q key enables debug mode, allowing ball control with the TFGH keys while hiding the trajectory line.
 - Pressing the Q key again while in debug mode exits the debug mode and resumes normal ball movement.
 - Pressing the R key fully resets the game, restoring all states, positions, and UI elements to their initial values.
 - Pressing the P key pauses the game with a centered "PAUSED" label, and pressing it again resumes the game.
@@ -52,7 +52,7 @@ Task from scratch
 
 <ins> How long would you anticipate an 'Employee' to complete this task? (in hours) </ins>
 <br>
-4
+5
 
 ### **Starting state** ###
 Please describe and include below any information about the starting state of this project:
@@ -134,8 +134,8 @@ This task is a realistic and appropriate assignment for a junior-level developer
 - Run the main scene to observe the dashed center line, then press E to show a solid line that predicts the ball's path after a paddle hit.
 - The dashed center line reinforces a playfield symmetry, while the trajectory toggle helps players understand the ball bounce path.
 
-15. Pressing Q toggles debug mode for ball control with the UHJK keys, which hides the trajectory line, and pressing it again exits the mode.
-- Run the main scene, press Q to activate debug mode, use UHJK keys to control the ball, and verify the line disappears until reset.
+15. Pressing Q toggles debug mode for ball control with the TFGH keys, which hides the trajectory line, and pressing it again exits the mode.
+- Run the main scene, press Q to activate debug mode, use the TFGH keys to control the ball, and verify the line disappears until reset.
 - Debug mode allows controlled testing of ball behavior, and hiding the trajectory line prevents it from interfering with manual control.
 
 16. Pressing the P key displays a "PAUSED" label in the center, and pressing the same input again hides the label to resume the gameplay.
