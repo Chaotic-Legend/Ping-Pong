@@ -1,0 +1,206 @@
+[gd_scene format=3 uid="uid://c3fvsxmoctjs6"]
+
+[ext_resource type="Script" uid="uid://bp0c6kvlovvc0" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="AudioStream" uid="uid://cvc2griprro3x" path="res://assets/audio/explosion.wav" id="2_oo0fn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_toqtt"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_ahhtf"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_oo0fn"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_6fi6k"]
+font_size = 70
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ysmq"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_uo2fv"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_047uy"]
+font_size = 70
+
+[node name="HUD" type="Control" unique_id=1305167497]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ahhtf")
+
+[node name="LeftScore" type="Label" parent="." unique_id=1711742105]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 150.0
+offset_right = 450.0
+offset_bottom = 150.0
+text = "0"
+label_settings = SubResource("LabelSettings_toqtt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightScore" type="Label" parent="." unique_id=1466290005]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -450.0
+offset_right = -150.0
+offset_bottom = 150.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_toqtt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseLabel" type="Label" parent="." unique_id=3669997]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -11.5
+offset_right = 31.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "Paused"
+label_settings = SubResource("LabelSettings_ahhtf")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="RoundLabel" type="Label" parent="." unique_id=853868639]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Round 0"
+label_settings = SubResource("LabelSettings_oo0fn")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="RoundWinsLabel" type="Label" parent="." unique_id=1328205797]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = 40.0
+offset_right = 59.5
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 - 0"
+label_settings = SubResource("LabelSettings_6fi6k")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TieBreakerLabel" type="Label" parent="." unique_id=722584568]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.5
+offset_top = 40.0
+offset_right = 173.5
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tiebreaker"
+label_settings = SubResource("LabelSettings_5ysmq")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="WinScreen" type="Control" parent="." unique_id=927865215]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="WinScreen" unique_id=1658378707]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="WinScreen" unique_id=786462858]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -152.0
+offset_right = 120.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/CenterContainer" unique_id=214916045]
+layout_mode = 2
+alignment = 1
+
+[node name="WinnerLabel" type="Label" parent="WinScreen/CenterContainer/VBoxContainer" unique_id=1678922792]
+layout_mode = 2
+text = "Player 1 Wins"
+label_settings = SubResource("LabelSettings_uo2fv")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="FinalScoreLabel" type="Label" parent="WinScreen/CenterContainer/VBoxContainer" unique_id=503838282]
+layout_mode = 2
+text = "Final Score 0 - 0"
+label_settings = SubResource("LabelSettings_047uy")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="PlayAgainButton" type="Button" parent="WinScreen/CenterContainer/VBoxContainer" unique_id=484777468]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "PLAY AGAIN"
+
+[node name="BallOutSound" type="AudioStreamPlayer2D" parent="." unique_id=656421967]
+unique_name_in_owner = true
+stream = ExtResource("2_oo0fn")
+max_polyphony = 10
+
+[connection signal="pressed" from="WinScreen/CenterContainer/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]

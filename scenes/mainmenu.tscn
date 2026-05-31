@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://b61yo3li5q05y"]
+
+[ext_resource type="Script" uid="uid://cbm0oqh1kim1h" path="res://scripts/mainmenu.gd" id="1_natt5"]
+[ext_resource type="PackedScene" uid="uid://c5lq021rtreld" path="res://scenes/game.tscn" id="2_r3g3c"]
+[ext_resource type="AudioStream" uid="uid://8ovq4373284m" path="res://assets/audio/beep1.wav" id="3_s5g8n"]
+[ext_resource type="AudioStream" uid="uid://dnhh85be7clmf" path="res://assets/audio/beep2.wav" id="4_7yvfd"]
+[ext_resource type="AudioStream" uid="uid://cvc2griprro3x" path="res://assets/audio/explosion.wav" id="5_dfy5j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_natt5"]
+font_size = 200
+
+[sub_resource type="LabelSettings" id="LabelSettings_7yvfd"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_3vvtq"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_r3g3c"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_s5g8n"]
+font_size = 50
+
+[node name="MainMenu" type="Control" unique_id=348343898]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_natt5")
+game_scene = ExtResource("2_r3g3c")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1602127385]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GameTitle" type="Label" parent="." unique_id=532837951]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ping Pong"
+label_settings = SubResource("LabelSettings_natt5")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="VersionLabel" type="Label" parent="." unique_id=996788026]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -35.0
+offset_right = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Version 2.0.0"
+label_settings = SubResource("LabelSettings_7yvfd")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=857658776]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.5
+offset_top = -45.0
+offset_right = 259.5
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1414975819]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="P1VSCOM2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=890366497]
+layout_mode = 2
+focus_neighbor_top = NodePath("../COM1VSCOM2")
+focus_neighbor_bottom = NodePath("../P1VSP2")
+theme_override_font_sizes/font_size = 50
+text = "Player 1 Vs. COM 2"
+icon_alignment = 1
+
+[node name="P1VSP2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1816520157]
+layout_mode = 2
+focus_neighbor_top = NodePath("../P1VSCOM2")
+focus_neighbor_bottom = NodePath("../COM1VSCOM2")
+theme_override_font_sizes/font_size = 50
+text = "Player 1 Vs. Player 2"
+icon_alignment = 1
+
+[node name="COM1VSCOM2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1532356828]
+layout_mode = 2
+focus_neighbor_top = NodePath("../P1VSP2")
+focus_neighbor_bottom = NodePath("../P1VSCOM2")
+theme_override_font_sizes/font_size = 50
+text = "COM 1 Vs. COM 2"
+icon_alignment = 1
+
+[node name="MatchSetup" type="VBoxContainer" parent="CenterContainer" unique_id=2036027668]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="RoundsLabel" type="Label" parent="CenterContainer/MatchSetup" unique_id=1796434768]
+layout_mode = 2
+text = "Number of Rounds"
+label_settings = SubResource("LabelSettings_3vvtq")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MatchSetup" unique_id=964178983]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="DecreaseRoundsButton" type="Button" parent="CenterContainer/MatchSetup/HBoxContainer" unique_id=529456752]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_right = NodePath("../IncreaseRoundsButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/OneBallButton")
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_font_sizes/font_size = 40
+text = "◀"
+
+[node name="RoundValueLabel" type="Label" parent="CenterContainer/MatchSetup/HBoxContainer" unique_id=1523819294]
+unique_name_in_owner = true
+layout_mode = 2
+text = "3"
+label_settings = SubResource("LabelSettings_r3g3c")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="IncreaseRoundsButton" type="Button" parent="CenterContainer/MatchSetup/HBoxContainer" unique_id=1959159839]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../DecreaseRoundsButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/TwoBallButton")
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_font_sizes/font_size = 40
+text = "▶"
+
+[node name="BallModeLabel" type="Label" parent="CenterContainer/MatchSetup" unique_id=472677011]
+layout_mode = 2
+text = "Number of Balls"
+label_settings = SubResource("LabelSettings_s5g8n")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/MatchSetup" unique_id=1064188611]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="OneBallButton" type="Button" parent="CenterContainer/MatchSetup/HBoxContainer2" unique_id=1292670729]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../HBoxContainer/DecreaseRoundsButton")
+focus_neighbor_right = NodePath("../TwoBallButton")
+focus_neighbor_bottom = NodePath("../../VBoxContainer/StartButton")
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_font_sizes/font_size = 40
+text = "1 BALL"
+
+[node name="TwoBallButton" type="Button" parent="CenterContainer/MatchSetup/HBoxContainer2" unique_id=858524770]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../OneBallButton")
+focus_neighbor_top = NodePath("../../HBoxContainer/IncreaseRoundsButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../VBoxContainer/StartButton")
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_font_sizes/font_size = 40
+text = "2 BALLS"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MatchSetup" unique_id=1991511054]
+layout_mode = 2
+alignment = 1
+
+[node name="StartGame" type="Control" parent="CenterContainer/MatchSetup/VBoxContainer" unique_id=262657326]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="CenterContainer/MatchSetup/VBoxContainer" unique_id=1599696808]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_font_sizes/font_size = 40
+text = "START GAME"
+icon_alignment = 1
+
+[node name="Beep1" type="AudioStreamPlayer2D" parent="." unique_id=1874693828]
+stream = ExtResource("3_s5g8n")
+max_polyphony = 10
+
+[node name="Beep2" type="AudioStreamPlayer2D" parent="." unique_id=68627760]
+stream = ExtResource("4_7yvfd")
+max_polyphony = 10
+
+[node name="BallOutSound" type="AudioStreamPlayer2D" parent="." unique_id=1666732194]
+stream = ExtResource("5_dfy5j")
+max_polyphony = 10

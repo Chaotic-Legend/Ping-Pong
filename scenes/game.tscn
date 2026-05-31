@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://c5lq021rtreld"]
+
+[ext_resource type="Script" uid="uid://ctf37u0cuwrjc" path="res://scripts/game.gd" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://c3fvsxmoctjs6" path="res://scenes/hud.tscn" id="2_p57ef"]
+[ext_resource type="PackedScene" uid="uid://d4g4hmojb0o3j" path="res://scenes/paddle.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://dylp62g7hfs5f" path="res://scripts/dashed_line_drawer.gd" id="3_gee14"]
+[ext_resource type="PackedScene" uid="uid://babfb1yc444b8" path="res://scenes/ball.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://ccrshnwtxm40i" path="res://scenes/wall.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cx4bndexy7pqh" path="res://scenes/detector.tscn" id="5_iywne"]
+[ext_resource type="AudioStream" uid="uid://cvc2griprro3x" path="res://assets/audio/explosion.wav" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://p856i285lyfn" path="res://scripts/rightpaddle.gd" id="9_0tnpc"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_8cj0n"]
+
+[node name="Game" type="Node2D" unique_id=210882428]
+process_mode = 3
+script = ExtResource("1_uwrxv")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2076675671]
+
+[node name="HUD" parent="UI" unique_id=1667650351 instance=ExtResource("2_p57ef")]
+
+[node name="MainMenu" parent="UI" unique_id=348343898 instance_placeholder="res://scenes/mainmenu.tscn"]
+visible = false
+
+[node name="StartDelay" type="Timer" parent="." unique_id=1086023880]
+one_shot = true
+
+[node name="GameField" type="Node2D" parent="." unique_id=586522949]
+
+[node name="Environment" type="Node2D" parent="GameField" unique_id=1988711381]
+
+[node name="Background" type="MeshInstance2D" parent="GameField/Environment" unique_id=1018948395]
+modulate = Color(0, 0, 0, 1)
+z_index = -10
+position = Vector2(641.5, 360.5)
+scale = Vector2(1300, 740)
+mesh = SubResource("QuadMesh_8cj0n")
+metadata/_edit_lock_ = true
+
+[node name="DashedLineDrawer" type="Node2D" parent="GameField/Environment" unique_id=1459698182]
+script = ExtResource("3_gee14")
+
+[node name="WallUp" parent="GameField/Environment" unique_id=1363057974 instance=ExtResource("4_lbhrr")]
+position = Vector2(640, -10)
+scale = Vector2(1.07, 1.07)
+
+[node name="WallDown" parent="GameField/Environment" unique_id=1788974125 instance=ExtResource("4_lbhrr")]
+position = Vector2(640, 730)
+scale = Vector2(1.07, 1.07)
+
+[node name="DetectorLeft" parent="GameField/Environment" unique_id=997497013 instance=ExtResource("5_iywne")]
+process_mode = 1
+position = Vector2(-10, 360)
+scale = Vector2(1.056, 1.056)
+is_left = true
+
+[node name="DetectorRight" parent="GameField/Environment" unique_id=130888524 instance=ExtResource("5_iywne")]
+process_mode = 1
+position = Vector2(1290, 360)
+scale = Vector2(1.056, 1.056)
+
+[node name="TheBall" type="Node2D" parent="GameField" unique_id=127140788]
+
+[node name="Ball1" parent="GameField/TheBall" unique_id=1831076159 instance=ExtResource("3_lnu2h")]
+process_mode = 1
+position = Vector2(640, 360)
+
+[node name="Ball2" parent="GameField/TheBall" unique_id=1244598339 instance=ExtResource("3_lnu2h")]
+process_mode = 1
+position = Vector2(640, 360)
+
+[node name="LineBall1" type="Line2D" parent="GameField/TheBall" unique_id=1767684912]
+visible = false
+width = 4.0
+
+[node name="LineBall2" type="Line2D" parent="GameField/TheBall" unique_id=106687626]
+visible = false
+width = 4.0
+
+[node name="BallOutSound" type="AudioStreamPlayer2D" parent="GameField/TheBall" unique_id=1803839194]
+stream = ExtResource("6_u5sy4")
+max_polyphony = 10
+
+[node name="Paddles" type="Node2D" parent="GameField" unique_id=621361572]
+
+[node name="LeftPaddle" parent="GameField/Paddles" unique_id=1896301999 instance=ExtResource("2_yqjtg")]
+process_mode = 1
+position = Vector2(50, 360)
+is_player_one = true
+
+[node name="RightPaddle" parent="GameField/Paddles" unique_id=1490926684 instance=ExtResource("2_yqjtg")]
+process_mode = 1
+position = Vector2(1230, 360)
+script = ExtResource("9_0tnpc")
+is_player_two = true
+
+[editable path="UI/HUD"]
